@@ -133,7 +133,6 @@ def maxPlay(board, actionsSet):
         score = minPlay(newBoard, actions(newBoard))[0]
         actionsOrdered[score] = action
     
-    print("max" + str(sorted(actionsOrdered.items())))
     return sorted(actionsOrdered.items())[-1]
 
 def minPlay(board, actionsSet):
@@ -147,5 +146,4 @@ def minPlay(board, actionsSet):
         score = maxPlay(newBoard, actions(newBoard))[0]
         actionsOrdered[score] = action
 
-    print ("min" + str(sorted(actionsOrdered.items())))
     return sorted(actionsOrdered.items())[0]
