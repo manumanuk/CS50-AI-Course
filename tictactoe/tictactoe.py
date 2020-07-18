@@ -132,6 +132,8 @@ def maxPlay(board, actionsSet):
         newBoard = result(board, action)
         score = minPlay(newBoard, actions(newBoard))[0]
         actionsOrdered[score] = action
+        if score==1:
+            break
     
     return sorted(actionsOrdered.items())[-1]
 
@@ -145,5 +147,7 @@ def minPlay(board, actionsSet):
         newBoard = result(board, action)
         score = maxPlay(newBoard, actions(newBoard))[0]
         actionsOrdered[score] = action
+        if score==-1:
+            break
 
     return sorted(actionsOrdered.items())[0]
