@@ -77,6 +77,20 @@ def get_model():
     model = tf.keras.Sequential(
         [
             tf.keras.layers.Conv2D(8, (5, 5), activation="relu", input_shape=(IMG_WIDTH, IMG_HEIGHT, 3)),
+            tf.keras.layers.MaxPooling2D(pool_size=(2, 2)),
+            tf.keras.layers.Conv2D(16, (3, 3), activation="relu"),
+            tf.keras.layers.Conv2D(16, (3, 3), activation="relu"),
+            tf.keras.layers.MaxPooling2D(pool_size=(2,2)),
+            
+            tf.keras.layers.Flatten(),
+            
+            tf.keras.layers.Dense(256, activation="relu"),
+            tf.keras.layers.Dropout(0.5),
+            
+            tf.keras.layers.Dense(NUM_CATEGORIES, activation="softmax")
+        ]
+    )
+    '''tf.keras.layers.Conv2D(8, (5, 5), activation="relu", input_shape=(IMG_WIDTH, IMG_HEIGHT, 3)),
 
             tf.keras.layers.Conv2D(16, (3, 3), activation="relu"),
             tf.keras.layers.Conv2D(16, (3, 3), activation="relu"),
@@ -90,9 +104,7 @@ def get_model():
 
             tf.keras.layers.Dense(512, activation="relu"),
                      
-            tf.keras.layers.Dense(NUM_CATEGORIES, activation="softmax")
-        ]
-    )
+            tf.keras.layers.Dense(NUM_CATEGORIES, activation="softmax")'''
     
     model.compile(optimizer="adam", loss="categorical_crossentropy", metrics=["accuracy"])
     return model
